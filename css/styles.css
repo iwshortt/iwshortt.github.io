@@ -1,0 +1,372 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Noto Sans Adlam", sans-serif;
+  color: #cdcdcd;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #000000;
+}
+
+section {
+  padding: 0.938rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "ADLaM Display", cursive;
+  text-shadow: 0 0 0.3em currentColor;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  background-color: #0c0c0c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 4.688rem;
+  padding: 0.313rem 0.625rem;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+}
+
+.logo {
+  background-image: url("../img/nft-800.png");
+  width: 35rem;
+  height: 35rem;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 0.188rem solid pink;
+  animation: morph 8s ease-in-out infinite;
+  border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  position: relative;
+  transition: all 1s ease-in-out;
+}
+@media (max-width: 500px) {
+  .logo {
+    width: 28rem;
+    height: 28rem;
+  }
+}
+@keyframes morph {
+  0% {
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  }
+}
+
+.logo {
+  width: 3.125rem;
+  height: 3.125rem;
+  border-radius: 50%;
+}
+
+.primary-navigation {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.primary-navigation[data-visible=true] {
+  transform: translateX(0%);
+}
+
+.primary-navigation a {
+  text-decoration: none;
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+@media (max-width: 35em) {
+  .primary-navigation {
+    position: fixed;
+    z-index: 1000;
+    inset: 0 0 0 0%;
+    flex-direction: column;
+    padding: min(30vh, 7.5rem) 2em;
+    background: hsla(0deg, 0%, 100%, 0.1);
+    backdrop-filter: blur(1rem);
+    transform: translateX(100%);
+    transition: transform 350ms ease-out;
+  }
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    border: 0;
+    top: 1.5rem;
+    right: 1rem;
+    border-radius: 0.313rem;
+    --button-color: pink;
+    overflow: hidden;
+    background-color: transparent;
+  }
+  .mobile-nav-toggle .hamburger {
+    transition: translate 1s, rotate 1s;
+  }
+  .mobile-nav-toggle[aria-expanded=true] .hamburger {
+    rotate: 0.125turn;
+  }
+  .mobile-nav-toggle .line {
+    transition: 1s;
+    stroke-dasharray: 60 31 60 300;
+  }
+  .mobile-nav-toggle[aria-expanded=true] .line {
+    stroke-dasharray: 60 105 60 300;
+    stroke-dashoffset: -90;
+  }
+}
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: calc(100vh - 90px);
+  padding: 0.938rem;
+}
+
+.social-gh,
+.social-in {
+  width: 2.5rem;
+  height: auto;
+}
+
+.social-in {
+  margin-left: 0.938rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+header p {
+  margin: 0;
+  font-size: 1.25rem;
+  font-family: "ADLaM Display", cursive;
+  color: pink;
+  text-shadow: 0 0 0.3em currentColor;
+}
+
+.about {
+  height: calc(100vh - 90px);
+  display: flex;
+  text-align: center;
+  background-color: rgb(12, 12, 12);
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.about h2,
+.about p {
+  margin: 0;
+}
+
+.about-text h2,
+.tech-stack {
+  margin-top: 0.938rem;
+  margin-bottom: 0.938rem;
+}
+
+.headshot {
+  background-image: url("../img/nft-800.png");
+  width: 35rem;
+  height: 35rem;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 0.188rem solid pink;
+  animation: morph 8s ease-in-out infinite;
+  border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  position: relative;
+  transition: all 1s ease-in-out;
+}
+@media (max-width: 500px) {
+  .headshot {
+    width: 28rem;
+    height: 28rem;
+  }
+}
+@keyframes morph {
+  0% {
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  }
+}
+
+.headshot {
+  width: 15.625rem;
+  height: 15.625rem;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.tech-stack {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.tech-stack p {
+  margin-bottom: 0.938rem;
+  font-size: 1.25rem;
+  font-family: "ADLaM Display", cursive;
+}
+
+.stack-logo {
+  width: 2.188rem;
+  height: auto;
+}
+
+.portfolio {
+  text-align: center;
+}
+
+.project-top {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px 0px rgba(69, 69, 69, 0.5);
+  border-radius: 0.313rem;
+  padding: 0.625rem;
+  margin-top: 0.938rem;
+  margin-bottom: 0.938rem;
+  background-color: black;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(5000px) rotateY(var(--rotateY)) rotateX(var(--rotateX));
+}
+
+.project-top::before,
+.project-top:after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+}
+
+.project-top::before {
+  inset: 0.75rem;
+  background: black;
+  transform: translateZ(-49px);
+  filter: blur(15px);
+  opacity: 0.5;
+}
+
+.project-top::after {
+  inset: -0.5rem;
+  background: linear-gradient(-45deg, red, blue);
+  transform: translateZ(-50px);
+}
+
+.project-img {
+  width: 100%;
+  height: 9.375rem;
+  border-radius: 0.313rem;
+  box-shadow: 0 0 10px 0px rgba(255, 255, 255, 0.5);
+}
+
+.project-title {
+  display: flex;
+  align-items: center;
+}
+
+h3 {
+  margin: 0.625rem 0 0;
+}
+
+.project-social {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-left: 0.625rem;
+}
+
+.project-title img:first-of-type {
+  margin-left: auto;
+}
+
+.project-title {
+  margin: 0.938rem 0.938rem;
+}
+
+.source {
+  display: flex;
+  justify-content: center;
+  margin: 0.938rem 0;
+}
+
+.source a {
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 0.313rem;
+  padding: 0.625rem;
+}
+
+.source a:first-child {
+  margin-right: 0.938rem;
+}
+
+.contact {
+  height: calc(100vh - 90px);
+  background-color: rgb(12, 12, 12);
+  text-align: center;
+}
+
+.project-preview,
+.project {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-preview {
+  height: 100%;
+  justify-content: center;
+}
+
+.project-preview h2 {
+  margin-bottom: 3.125rem;
+}
+
+.project {
+  margin-bottom: 1.563rem;
+}
+
+.project p {
+  margin-top: 0.438rem;
+}
+
+footer {
+  height: 4.688rem;
+  display: flex;
+}
+
+footer p {
+  margin: auto auto;
+}
+
+/*# sourceMappingURL=styles.css.map */
