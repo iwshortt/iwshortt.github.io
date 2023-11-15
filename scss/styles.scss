@@ -88,6 +88,9 @@ nav {
 }
 .primary-navigation[data-visible="true"] {
     transform: translateX(0%);
+    @media (min-width: 768px) {
+        transform: translateY(0%);
+    }
 }
 .primary-navigation a {
     text-decoration: none;
@@ -95,17 +98,22 @@ nav {
 .mobile-nav-toggle {
     display: none;
 }
-@media (max-width: 35em) {
+// @media (max-width: 35em) {
     .primary-navigation {
         position: fixed;
         z-index: 1000;
         inset: 0 0 0 0%;
         flex-direction: column;
         padding: min(30vh, 7.5rem) 2em;
-        background: hsl(0 0% 100% / 0.1);
+        // background: hsl(0 0% 100% / 0.1);
+        background: #0c0c0c;
         backdrop-filter: blur(1rem);
         transform: translateX(100%);
         transition: transform 350ms ease-out;
+        @media (min-width: 768px) {
+            inset: 0 0 50% 75%;
+            transform: translateY(-100%);
+        }
     }
     .mobile-nav-toggle {
         display: block;
@@ -136,7 +144,7 @@ nav {
         stroke-dasharray: 60 105 60 300;
         stroke-dashoffset: -90;
     }
-}
+// }
 
 // ------------------------------------------------------- //
 // ----------------------- Base -------------------------- //
@@ -146,15 +154,16 @@ header {
     flex-direction: column;
     justify-content: flex-end;
     // border: 2px solid red;
-    height: calc(100vh - 90px);
+    height: calc(100vh - 0px); // edit to clean up code
     padding: .938rem;
 }
 .social-gh,
 .social-in {
     width: 2.5rem;
     height: auto;
+    filter: contrast(0.5);
 }
-.social-in {
+.social .social-in {
     margin-left: .938rem;
 }
 h1 {
@@ -162,7 +171,7 @@ h1 {
     font-size: 3rem;
 }
 header p {
-    margin: 0;
+    margin: 0 0 25px 0;
     font-size: 1.25rem;
     font-family: 'ADLaM Display', cursive;
     color: pink;
@@ -174,7 +183,7 @@ header p {
 // ------------------------------------------------------- //
 .about {
     // border: 2px solid blue;
-    height: calc(100vh - 90px);
+    // height: calc(100vh + 4.688rem);
     display: flex;
     text-align: center;
     background-color: rgb(12, 12, 12);
@@ -188,10 +197,15 @@ header p {
 .about p {
     margin: 0;
 }
-.about-text h2,
 .tech-stack {
     margin-top: .938rem;
     margin-bottom: .938rem;
+}
+.about-text h2 {
+    margin: 75px 0 1.75rem 0;
+}
+.about p {
+    max-width: 768px;
 }
 .headshot {
     background-image: url("../img/nft-800.png");
@@ -231,6 +245,7 @@ header p {
     height: 15.625rem;
     border-radius: 50%;
     margin: 0 auto;
+    margin-top: 95px;
 }
 .tech-stack {
     display: flex;
@@ -238,13 +253,19 @@ header p {
     flex-direction: column;
 }
 .tech-stack p {
+    margin-top: 55px;
     margin-bottom: .938rem;
     font-size: 1.25rem;
     font-family: 'ADLaM Display', cursive;
 }
+.tech-stack-logo {
+    margin-top: 25px;
+    margin-bottom: 95px;
+}
 .stack-logo {
-    width: 2.188rem;
+    width: 2.5rem;
     height: auto;
+    margin-left: 25px;
 }
 
 // ------------------------------------------------------- //
@@ -254,15 +275,25 @@ header p {
     // border: 2px solid green;
     text-align: center;
 }
+.portfolio h2 {
+    margin: 100px 0 1.75rem 0;
+}
+.portfolio p {
+    margin: 0 auto;
+    margin-bottom: 100px;
+    max-width: 768px;
+}
 .project-top {
     display: flex;
     flex-direction: column;
+    max-width: 500px;
     // border: 2px solid orange;
     box-shadow: 0 0 10px 0px rgba(69, 69, 69, 0.5);
     border-radius: .313rem;
     padding: .625rem;
+    margin: 0 auto;
     margin-top: .938rem;
-    margin-bottom: .938rem;
+    margin-bottom: 95px;
     background-color: black;
 
     position: relative;
@@ -272,6 +303,9 @@ header p {
         perspective(5000px)
         rotateY(var(--rotateY))
         rotateX(var(--rotateX));
+    @media (min-width: 768px) {
+        height: 575px;
+    }
 }
 .project-top::before,
 .project-top:after {
@@ -289,14 +323,21 @@ header p {
 .project-top::after {
     inset: -.5rem;
     background:
-        linear-gradient(-45deg, red, blue);
+        linear-gradient(-45deg, rgb(70, 70, 70), rgb(136, 136, 136));
     transform: translateZ(-50px);
+    opacity: .001;
 }
 .project-img {
     width: 100%;
     height: 9.375rem;
     border-radius: .313rem;
     box-shadow: 0 0 10px 0px rgba(255, 255, 255, 0.5);
+    @media (min-width: 768px) {
+        height: 15rem;
+        margin-left: 35px;
+        margin-top: 15px;
+        width: 85%;
+    }
 }
 // .project-info {
 //     text-align: center;
@@ -304,30 +345,53 @@ header p {
 .project-title {
     display: flex;
     align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+    @media (min-width: 768px) {
+        margin-top: 40px;
+    }
 }
 h3 {
-    margin: .625rem 0 0;
+    margin-right: 25px;
+    font-size: 1.75em;
 }
 .project-social {
-    width: 1.125rem;
-    height: 1.125rem;
+    width: 1.425rem;
+    height: 1.425rem;
     margin-left: .625rem;
 }
-.project-title img:first-of-type {
-    margin-left: auto;
-}
-.project-title {
-    margin: .938rem .938rem;
-}
+// .project-title img:first-of-type {
+//     margin-left: auto;
+// }
+// .project-title {
+//     margin: .938rem .938rem;
+// }
 .source {
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     margin: .938rem 0;
+    margin-top: 25px;
+    justify-content: space-around;
 }
 .source a {
+    display: flex;
+    align-items: center;
     box-shadow: 0 0 10px 0px rgba(0,0,0,.5);
     border-radius: .313rem;
-    padding: .625rem;
+    // padding: .625rem;
+}
+.project-info p {
+    margin: 0;
+    text-align: justify;
+    margin-top: 10px;
+    @media (min-width: 768px) {
+        margin-top: 25px;
+        margin-left: 35px;
+        margin-right: 35px;
+    }
+}
+.source .social-gh {
+    margin-left: 10px;
 }
 .source a:first-child {
     margin-right: .938rem;
@@ -338,7 +402,7 @@ h3 {
 // ------------------------------------------------------- //
 .contact {
     // border: 2px solid purple;
-    height: calc(100vh - 90px);
+    height: 90vh;
     background-color: rgb(12, 12, 12);
     text-align: center;
 }
