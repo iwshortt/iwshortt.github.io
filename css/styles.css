@@ -3,7 +3,7 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
-  font-family: "Noto Sans Adlam", sans-serif;
+  font-family: 'Overpass', sans-serif;
   color: #cdcdcd;
 }
 
@@ -16,12 +16,13 @@ body {
 section {
   padding: 0.938rem;
 }
-
-h1,
+h1 {
+  font-family: 'Reenie Beanie', cursive;
+  /* text-shadow: 0 0 0.3em currentColor; */
+}
 h2,
 h3 {
-  font-family: "ADLaM Display", cursive;
-  text-shadow: 0 0 0.3em currentColor;
+  font-family: 'Annie Use Your Telescope', cursive;
 }
 
 a {
@@ -29,7 +30,7 @@ a {
 }
 
 nav {
-  background-color: #0c0c0c;
+  /* background-color: #0c0c0c; */ /* chnage bg color on hover / maybe just a bottom border */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -90,12 +91,24 @@ nav {
 }
 @media (min-width: 768px) {
   .primary-navigation[data-visible=true] {
+    top: 80px;
+    border-radius: 10px;
     transform: translateY(0%);
+  }
+  .primary-navigation[data-visible=true] li {
+    display: flex;
+    justify-content: center;
+    margin: 2.5px;
+    padding: 5px;
+    position: relative;
+    top: -100px;
   }
 }
 
 .primary-navigation a {
   text-decoration: none;
+  font-family: 'Annie Use Your Telescope', cursive;
+  font-size: 1.5em;
 }
 
 .mobile-nav-toggle {
@@ -163,7 +176,7 @@ header {
 .social-in {
   width: 2.5rem;
   height: auto;
-  filter: contrast(0.5);
+  /* filter: contrast(0.5); */
 }
 
 .social .social-in {
@@ -178,9 +191,8 @@ h1 {
 header p {
   margin: 0 0 25px 0;
   font-size: 1.25rem;
-  font-family: "ADLaM Display", cursive;
+  font-family: 'Annie Use Your Telescope', cursive;
   color: pink;
-  text-shadow: 0 0 0.3em currentColor;
 }
 
 .about {
@@ -201,7 +213,7 @@ header p {
 }
 
 .tech-stack {
-  margin-top: 0.938rem;
+  margin-top: 2rem;
   margin-bottom: 0.938rem;
 }
 
@@ -293,25 +305,29 @@ header p {
 .project-top {
   display: flex;
   flex-direction: column;
-  max-width: 500px;
-  box-shadow: 0 0 10px 0px rgba(69, 69, 69, 0.5);
+  /* max-width: 500px; */
+  /* box-shadow: 0 0 10px 0px rgba(69, 69, 69, 0.5); */
   border-radius: 0.313rem;
   padding: 0.625rem;
   margin: 0 auto;
-  margin-top: 0.938rem;
-  margin-bottom: 95px;
+  margin-top: 10rem;
+  margin-bottom: 250px;
   background-color: black;
   position: relative;
-  transform-style: preserve-3d;
-  transform: perspective(5000px) rotateY(var(--rotateY)) rotateX(var(--rotateX));
+  /* css used to style the 'rotate element' function */
+  /* transform-style: preserve-3d;
+  transform: perspective(5000px) rotateY(var(--rotateY)) rotateX(var(--rotateX)); */
 }
 @media (min-width: 768px) {
   .project-top {
-    height: 575px;
+    height: 265px;
+    width: fit-content;
+    /* overflow: hidden; */
+    flex-flow: column wrap;
   }
 }
-
-.project-top::before,
+/* css used to style the 'rotate element' function */
+/* .project-top::before,
 .project-top:after {
   content: "";
   position: absolute;
@@ -331,20 +347,20 @@ header p {
   background: linear-gradient(-45deg, rgb(70, 70, 70), rgb(136, 136, 136));
   transform: translateZ(-50px);
   opacity: 0.001;
-}
+} */
 
 .project-img {
-  width: 100%;
+  /* width: 100%; */
   height: 9.375rem;
   border-radius: 0.313rem;
-  box-shadow: 0 0 10px 0px rgba(255, 255, 255, 0.5);
+  /* box-shadow: 0 0 10px 0px rgba(255, 255, 255, 0.5); */
 }
 @media (min-width: 768px) {
   .project-img {
     height: 15rem;
-    margin-left: 35px;
-    margin-top: 15px;
-    width: 85%;
+    margin-right: 35px;
+    /* margin-top: 15px; */
+    /* width: 85%; */
   }
 }
 
@@ -356,7 +372,8 @@ header p {
 }
 @media (min-width: 768px) {
   .project-title {
-    margin-top: 40px;
+    margin-top: 0;
+    justify-content: flex-start;
   }
 }
 
@@ -370,16 +387,23 @@ h3 {
   height: 1.425rem;
   margin-left: 0.625rem;
 }
+.project-social:first-of-type {
+  margin-left: auto;
+}
+/* .project-social:last-child {
+  margin-right: 35px;
+} */
 
 .source {
   display: flex;
   margin: 0.938rem 0;
-  margin-top: 25px;
-  justify-content: space-around;
+  /* margin-top: 25px; */
+  /* justify-content: space-around; */
 }
 
 .source a {
   display: flex;
+  flex-direction: column;
   align-items: center;
   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.5);
   border-radius: 0.313rem;
@@ -390,17 +414,21 @@ h3 {
   text-align: justify;
   margin-top: 10px;
 }
+/* placed here so that the margin on the 'p' within the source div receives the syling */
+.source p {
+  margin-top: 0;
+  font-family: 'Reenie Beanie', cursive;
+}
 @media (min-width: 768px) {
   .project-info p {
-    margin-top: 25px;
-    margin-left: 35px;
-    margin-right: 35px;
+    max-width: 400px;
+    /* margin-right: 35px; */
   }
 }
 
-.source .social-gh {
-  margin-left: 10px;
-}
+/* .source .social-gh {
+  margin-left: 25px;
+} */
 
 .source a:first-child {
   margin-right: 0.938rem;
@@ -433,6 +461,8 @@ h3 {
 
 .project p {
   margin-top: 0.438rem;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 1.3em;
 }
 
 footer {
@@ -442,6 +472,41 @@ footer {
 
 footer p {
   margin: auto auto;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 1.5em;
 }
+
+/* ///////////////////////////////////////////
+Styles added without sass
+ -- note --
+figure out how to use sass on windows,
+edit before final submission
+////////////////////////////////////////////*/
+
+.project-divider-odd,
+.project-divider-even {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: -50px;
+  width: 200px;
+}
+.project-divider-odd {
+  left: -195px;
+  flex-direction: row-reverse;
+}
+.project-divider-even {
+  right: -195px;
+}
+.divider {
+  width: 150px;
+  height: 2px;
+  background-color: white;
+}
+.divider-num {
+  font-family: 'Lemon', serif;
+}
+
 
 /*# sourceMappingURL=styles.css.map */
