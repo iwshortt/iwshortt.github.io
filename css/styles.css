@@ -7,7 +7,14 @@
   color: #cdcdcd;
 }
 
+html {
+  min-height: -webkit-fill-available;
+}
+
 body {
+  height: 100vh;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
   margin: 0;
   overflow-x: hidden;
   background-color: #000000;
@@ -173,7 +180,9 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: calc(100vh - 0px);
+  /* height: calc(100vh - 0px); */
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   padding: 0.938rem;
 }
 
@@ -295,13 +304,13 @@ header p {
 .tech-stack p {
   margin-top: 5px;
   margin-bottom: 0.938rem;
-  font-size: 1.15rem;
-  font-family: "ADLaM Display", cursive;
+  font-size: 1.5rem;
+  font-family: 'Annie Use Your Telescope', cursive;
 }
 @media (min-width: 768px) {
   .tech-stack p {
     margin-top: 55px;
-    font-size: 1.25rem;
+    font-size: 1.75rem;
   }
 }
 

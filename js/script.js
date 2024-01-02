@@ -41,3 +41,11 @@ navToggle.addEventListener('click', () => {
 //     element.style.setProperty('--rotateX', offsetY + 'deg');
 //     element.style.setProperty('--rotateY', -1 * offsetX + 'deg');
 // }
+
+// ------------------------------------------------------- //
+// --------------- viewport fix for mobile --------------- //
+// ------------------------------------------------------- //
+window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
