@@ -15,6 +15,7 @@ body {
   height: 100vh;
   /* mobile viewport bug fix */
   min-height: -webkit-fill-available;
+  height: calc(var(--vh, 1vh) * 100);
   margin: 0;
   overflow-x: hidden;
   background-color: #000000;
@@ -182,7 +183,6 @@ header {
   justify-content: flex-end;
   /* height: calc(100vh - 0px); */
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
   padding: 0.938rem;
 }
 
