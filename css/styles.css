@@ -209,15 +209,10 @@ h1 {
 }
 
 header p {
-  margin: 0 0 80px 0;
+  margin: 0 0 25px 0;
   font-size: 1.5rem;
   font-family: 'Annie Use Your Telescope', cursive;
   color: pink;
-}
-@media (min-width: 768px) {
-  header p {
-    margin: 0 0 25px 0;
-  }
 }
 
 .about {
@@ -481,6 +476,9 @@ h3 {
   border-radius: 0.313rem;
 }
 
+.project-info {
+  display: inline-block;
+}
 .project-info p {
   margin: 0;
   text-align: justify;
@@ -517,6 +515,11 @@ h3 {
   background-color: rgb(12, 12, 12);
   text-align: center;
   padding: 95px 0.938rem;
+}
+@media (min-width: 768px) {
+  .contact {
+    padding: 150px 0.938rem;
+  }
 }
 
 .project-preview,
@@ -594,9 +597,21 @@ edit before final submission
   left: -195px;
   flex-direction: row-reverse;
 }
+@media (min-width: 768px) {
+  .project-divider-odd {
+    left: -115px;
+  }
+}
+
 .project-divider-even {
   right: -195px;
 }
+@media (min-width: 768px) {
+  .project-divider-even {
+    right: -115px;
+  }
+}
+
 .divider {
   width: 150px;
   height: 2px;
