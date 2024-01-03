@@ -209,10 +209,15 @@ h1 {
 }
 
 header p {
-  margin: 0 0 25px 0;
+  margin: 0 0 65px 0;
   font-size: 1.5rem;
   font-family: 'Annie Use Your Telescope', cursive;
   color: pink;
+}
+@media (min-width: 768px) {
+  header p {
+    margin: 0 0 25px 0;
+  }
 }
 
 .about {
