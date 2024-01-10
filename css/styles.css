@@ -1,79 +1,49 @@
-*,
-*::before,
-*::after {
+/* ------------------------------------------------------- //
+// ----------------------- Base -------------------------- //
+// ------------------------------------------------------- */
+* {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   font-family: 'Overpass', sans-serif;
-  color: #cdcdcd;
 }
-
-html {
-  min-height: -webkit-fill-available;
-}
-
-body {
-  height: 100vh;
-  /* mobile viewport bug fix */
-  min-height: -webkit-fill-available;
-  /* height: calc(var(--vh, 1vh) * 100); */
-  margin: 0;
-  overflow-x: hidden;
-  background-color: #000000;
-}
-
-section {
-  padding: 50px 0.938rem;
-}
-h1 {
-  font-family: 'Reenie Beanie', cursive;
-  /* text-shadow: 0 0 0.3em currentColor; */
-}
-h2,
-h3 {
+a {
+  color: var(--btn-color);
+  text-decoration: none;
   font-family: 'Annie Use Your Telescope', cursive;
 }
-
-a {
-  text-decoration: none;
+li {
+  list-style-type: none;
+}
+h1,
+h2 {
+  color: var(--font-color-secondary);
+}
+.wrapper { /* ***TEMPORARY FIX*** - header if a fixed size, therefore background is white around it - also must change '.about' and '.contact' background to white */
+  background-color: var(--bg-color-primary);
+}
+img,
+video { /* ***REMOVE*** -- added so that the videos and images wouldn't expand to 100% */
+  width: 2em;
+}
+.stack-logo,
+.source .social-img { /* ***NOTE*** -- controls the size of the 'tech stack' images in the header and the 'code' & 'project' links within each project */
+  width: 3rem;
+}
+/* ------------------------------------------------------- //
+// ------------------ svg size control ------------------- //
+// ------------------------------------------------------- */
+.svg-container { /* controls the width so it doesnt take up 100% */
+  width: fit-content;
+  height: fit-content;
+}
+.contact .svg-container { /* centers each svg in the contact section */
+  margin: 0 auto;
 }
 
-nav {
-  background-color: #0c0c0c;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 4.688rem;
-  padding: 0.313rem 0.625rem;
-  position: fixed;
-  top: 0;
-  z-index: 9999;
-}
-@media (min-width: 768px) {
-  .nav {
-    background-color: none;
-  }
-}
-
-.logo {
-  background-image: url("../img/nft-800.png");
-  width: 35rem;
-  height: 35rem;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  border: 0.188rem solid pink;
-  animation: morph 8s ease-in-out infinite;
-  border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-  position: relative;
-  transition: all 1s ease-in-out;
-}
-@media (max-width: 500px) {
-  .logo {
-    width: 28rem;
-    height: 28rem;
-  }
-}
+/* ------------------------------------------------------- //
+// --------------------- keyframes ----------------------- //
+// ------------------------------------------------------- */
 @keyframes morph {
   0% {
     border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
@@ -86,77 +56,99 @@ nav {
   }
 }
 
-.logo {
-  width: 3.125rem;
-  height: 3.125rem;
-  border-radius: 50%;
+/* ------------------------------------------------------- //
+// ------------------- light/dark mode ------------------- //
+// ------------------------------------------------------- */
+:root {
+  --bg-color-primary: #f9ffff;
+  --bg-color-secondary: #fff;
+  --font-color-primary: #000;
+  --font-color-secondary: #13d7ed;
+  --brand-color-primary: #465c66;
+  --btn-color: #465c66;
+  --box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+.dark-mode {
+  --bg-color-primary: #000;
+  --bg-color-secondary: #0c0c0c;
+  --font-color-primary: #fff;
+  --font-color-secondary: #13d7ed;
+  --brand-color-primary: #465c66;
+  --btn-color: #f5f5f5;
+  --box-shadow: 0 0 10px rgba(255,255,255,.123);
 }
 
-.primary-navigation {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
+#dark-mode-toggle { /* ***NOTE*** -- temporary placement until button works */
+  cursor: pointer;
+  position: relative;
+  right: 50px;
 }
 
-.primary-navigation[data-visible=true] {
-  transform: translateX(0%);
-}
-@media (min-width: 768px) {
-  .primary-navigation[data-visible=true] {
-    top: 80px;
-    border-radius: 10px;
-    transform: translateY(0%);
-  }
-  .primary-navigation[data-visible=true] li {
-    display: flex;
-    justify-content: center;
-    margin: 2.5px;
-    padding: 5px;
-    position: relative;
-    top: -100px;
-  }
+/* ------------------------------------------------------- //
+// ------------------------- fonts ----------------------- //
+// ------------------------------------------------------- */
+h1 {
+  font-family: 'Reenie Beanie', 'Overpass', sans-serif;
 }
 
-.primary-navigation a {
-  text-decoration: none;
-  font-family: 'Annie Use Your Telescope', cursive;
-  font-size: 1.5em;
+h2,
+h3,
+.tech-stack p,
+footer p {
+  font-family: 'Annie Use Your Telescope', 'Overpass', sans-serif;
 }
 
-.mobile-nav-toggle {
-  display: none;
+h2,
+.tech-stack p {
+  font-size: 1.5rem;
 }
 
-.primary-navigation {
+h3,
+p {
+  color: var(--font-color-primary);
+}
+
+/* ------------------------------------------------------- //
+// ------------------------- nav ------------------------- //
+// ------------------------------------------------------- */
+
+nav { /* nav positioning */
   position: fixed;
-  z-index: 1000;
-  inset: 0 0 0 0%;
-  flex-direction: column;
-  padding: min(30vh, 7.5rem) 2em;
-  background: #0c0c0c;
-  backdrop-filter: blur(1rem);
-  transform: translateX(100%);
-  transition: transform 350ms ease-out;
-}
-@media (min-width: 768px) {
-  .primary-navigation {
-    inset: 0 0 50% 75%;
-    transform: translateY(-100%);
-  }
-}
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+  padding: 0.625rem 1rem;
+  box-shadow: var(--box-shadow);
+  background-color: var(--bg-color-secondary);
+} /* nav positioning end */
 
-.mobile-nav-toggle {
-  display: block;
+.logo { /* nav logo positioning */
+  width: 3.125rem;
+  height: auto;
+  border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  animation: morph 8s ease-in-out infinite;
+  transition: all 1s ease-in-out;
+} 
+.logo span {
+  font-family: 'Reenie Beanie', 'Overpass', sans-serif;
+  color: aqua;
+  font-size: 1.5rem;
+} /* nav logo positioning end */
+
+.mobile-nav-toggle { /* hamburger menu */
+  cursor: pointer;
   position: absolute;
+  right: 1rem;
+  overflow: hidden;
+  display: block;
   z-index: 9999;
   border: 0;
-  top: 1.5rem;
-  right: 1rem;
   border-radius: 0.313rem;
-  --button-color: pink;
-  overflow: hidden;
   background-color: transparent;
+  --button-color: var(--btn-color);
 }
 
 .mobile-nav-toggle .hamburger {
@@ -167,442 +159,393 @@ nav {
   rotate: 0.125turn;
 }
 
-.mobile-nav-toggle .line {
+.mobile-nav-toggle .line { /* svg line control */
   transition: 1s;
   stroke-dasharray: 60 31 60 300;
-}
+} 
 
-.mobile-nav-toggle[aria-expanded=true] .line {
+.mobile-nav-toggle[aria-expanded=true] .line { /* svg line control once 'clicked' */
   stroke-dasharray: 60 105 60 300;
   stroke-dashoffset: -90;
-}
+} /* svg line control end */ /* hamburger menu end */
 
-header {
+.primary-navigation { /* hamburger menu ul */
+  position: fixed;
+  inset: 0 0 0 0%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  /* height: calc(100vh - 0px); */
-  height: 100vh;
-  min-height: calc(var(--vh, 1vh) * 100);
-  padding: 0.938rem;
+  align-items: center;
+  transform: translateX(100%);
+  transition: transform 350ms ease-out;
+  padding: min(30vh, 7.5rem) 2em;
+  background-color: var(--bg-color-secondary);
 }
-
-.social-gh,
-.social-in {
-  width: 2.5rem;
-  height: auto;
-  /* filter: contrast(0.5); */
-}
-
-.social .social-in {
-  margin-left: 0.938rem;
-}
-
-h1 {
-  margin: 0;
-  font-size: 2.25rem;
-}
-@media (min-width: 768px) {
-  h1 {
-    font-size: 3rem;
-  }
-}
-
-header p {
-  margin: 0 0 25px 0;
+.primary-navigation li { /* hamburger menu li */
+  padding: 1rem;
   font-size: 1.5rem;
-  font-family: 'Annie Use Your Telescope', cursive;
-  color: pink;
-}
+} /* hamburger menu li end */
 
-.about {
-  display: flex;
+.primary-navigation[data-visible=true] {
+  transform: translateX(0%);
+} /* hamburger menu ul end */
+
+/* ------------------------------------------------------- //
+// ------------------------ header ----------------------- //
+// ------------------------------------------------------- */
+header { /* header section */
+  padding: 6rem 0.938rem;
   text-align: center;
-  background-color: rgb(12, 12, 12);
+  background-color: var(--bg-color-primary);
 }
-
-.about-content {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-}
-
-.about h2,
-.about p {
-  margin: 0;
-}
-
-.tech-stack {
-  margin-top: 2rem;
-  margin-bottom: 0.938rem;
-}
-
-.about-text h2 {
-  margin: 35px 0 1.2rem 0;
-}
-@media (min-width: 768px) {
-  .about-text h2 {
-    margin: 75px 0 1.75rem 0;
-  }
-}
-
-.about p {
-  max-width: 768px;
-}
-
-.headshot {
-  background-image: url("../img/nft-800.png");
-  width: 35rem;
-  height: 35rem;
+.headshot { /* headshot photo */
+  position: relative;
+  width: 18rem;
+  height: 18rem;
+  margin: 0 auto;
+  background-image: url("../img/iws-portrait.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  border: 0.188rem solid pink;
+  border: 0.188rem solid var(--brand-color-primary);
   animation: morph 8s ease-in-out infinite;
   border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-  position: relative;
   transition: all 1s ease-in-out;
-}
-@media (max-width: 500px) {
-  .headshot {
-    width: 28rem;
-    height: 28rem;
-  }
-}
-@keyframes morph {
-  0% {
-    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-  }
-  50% {
-    border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
-  }
-  100% {
-    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-  }
+} /* headshot photo end */
+
+h1 {
+  font-size: 3.25em;
+  margin-top: 2.5rem;
 }
 
-.headshot {
-  width: 14rem;
-  height: 14rem;
-  border-radius: 50%;
-  margin: 0 auto;
-  margin-top: 65px;
+header p {
+  margin-top: 1rem;
+  line-height: 1.3;
+  max-width: 48.75rem;
 }
-@media (min-width: 768px) {
-  .headshot {
-    width: 15.625rem;
-    height: 15.625rem;
-    margin-top: 95px;
-  }
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .tech-stack {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  position: relative;
+  top: 3.125rem;
 }
 
 .tech-stack p {
-  margin-top: 5px;
-  margin-bottom: 0.938rem;
-  font-size: 1.5rem;
-  font-family: 'Annie Use Your Telescope', cursive;
-}
-@media (min-width: 768px) {
-  .tech-stack p {
-    margin-top: 55px;
-    font-size: 1.75rem;
-  }
-}
-
-.tech-stack-logo {
-  margin-top: 25px;
-  margin-bottom: 75px;
-}
-@media (min-width: 768px) {
-  .tech-stack-logo {
-    margin-bottom: 95px;
-  }
+  margin-bottom: 1rem;
 }
 
 .stack-logo {
-  width: 2.5rem;
-  height: auto;
-  margin-left: 15px;
-}
-@media (min-width: 768px) {
-  .stack-logo {
-    margin-left: 25px;
-  }
-}
+  margin: 1rem;
+} /* header section end */
 
-.portfolio {
-  text-align: center;
-  padding: 95px 0.938rem;
-}
-
-/* remove for mobile view */
-/* .portfolio h2 {
-  margin: 80px 0 1.75rem 0;
-} */
-@media (min-width: 768px) {
-  .portfolio h2 {
-    margin: 100px 0 1.75rem 0;
-  }
-}
-
-.portfolio p {
-  margin: 0 auto;
-  margin-bottom: 0;
-  max-width: 768px;
-}
-@media (min-width: 768px) {
-  .portfolio p {
-    margin-bottom: 100px;
-  }
-}
-
-.project-top {
+/* ------------------------------------------------------- //
+// ------------------------- about ----------------------- //
+// ------------------------------------------------------- */
+.about { /* about section */
   display: flex;
   flex-direction: column;
-  /* max-width: 500px; */
-  border-radius: 0.313rem;
-  padding: 0.625rem;
-  margin: 0 auto;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  background-color: black;
-  position: relative;
-}
-@media (min-width: 768px) {
-  .project-top {
-    height: 265px;
-    width: fit-content;
-    margin-top: 10rem;
-    margin-bottom: 250px;
-    /* overflow: hidden; */
-    flex-flow: column wrap;
-  }
+  align-items: center;
+  padding: 5rem 0.938rem;
+  text-align: center;
+  background-color: var(--bg-color-secondary);
 }
 
-.project-img {
-  /* width: 100%; */
-  height: 9.375rem;
-  border-radius: 0.313rem;
+.about-img {
+  width: 100%;
+  max-width: 33rem;
+  border-radius: 1.5rem;
+  margin-bottom: 2.5rem;
 }
-@media (min-width: 768px) {
-  .project-img {
-    height: 15rem;
-    margin-right: 35px;
-    /* margin-top: 15px; */
-    /* width: 85%; */
-  }
+
+.about-text {
+  max-width: 43.75rem;
+}
+
+.about h2 {
+  margin-bottom: 1rem;
+}
+
+.about p {
+  margin-bottom: 2.5rem;
+  line-height: 1.3;
+} /* about section end */
+
+/* ------------------------------------------------------- //
+// ----------------------- projects ---------------------- //
+// ------------------------------------------------------- */
+.portfolio { /* project section */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 5rem 0.938rem;
+  text-align: center;
+  background-color: var(--bg-color-primary);
+}
+
+.project-top { /* each individual project container */
+  margin: 3rem 0;
+  padding: 0.938rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 1.5rem;
+  background-color: var(--bg-color-secondary);
+} /* each individual project container end */
+
+.project-divider-even,
+.project-divider-odd { /* ***NOTE*** maybe remove from html for better code and display */
+  display: none;
+}
+
+.project-img { /* ***NOTE*** instead of video, use a static image that scrolls top to bottom on hover */
+  width: 100%;
+  margin-bottom: 2.5rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 1.5rem;
 }
 
 .project-title {
   display: flex;
   align-items: center;
-  margin-top: 30px;
-  justify-content: center;
-}
-@media (min-width: 768px) {
-  .project-title {
-    margin-top: 0;
-    justify-content: flex-start;
-  }
-}
-
-h3 {
-  margin-right: 25px;
-  font-size: 1.5em;
-}
-@media (min-width: 768px) {
-  h3 {
-    font-size: 1.75em;
-  }
+  margin-bottom: 1rem;
 }
 
 .project-social {
-  width: 1.425rem;
-  height: 1.425rem;
-  margin-left: 0.625rem;
+  margin-left: 0.5rem;
 }
-.project-social:first-of-type {
+
+.project-title img:first-of-type {
   margin-left: auto;
 }
-/* .project-social:last-child {
-  margin-right: 35px;
-} */
+
+.project-top p {
+  line-height: 1.3;
+  margin-bottom: 2.5rem;
+}
 
 .source {
   display: flex;
-  margin: 1.5rem 0;
-  /* margin-top: 25px; */
-  /* justify-content: space-around; */
-}
-
-.source a {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.5);
-  border-radius: 0.313rem;
-}
+  justify-content: space-around;
+} /* project section end */
 
-.project-info {
-  display: inline-block;
-}
-.project-info p {
-  margin: 0;
-  text-align: justify;
-  margin-top: 20px;
-  font-size: .85rem;
-}
-@media (min-width: 768px) {
-  .project-info p {
-    font-size: 1em;
-  }
-}
-/* placed here so that the margin on the 'p' within the source div receives the syling */
-.source p {
-  margin-top: 0;
-  font-family: 'Reenie Beanie', cursive;
-}
-@media (min-width: 768px) {
-  .project-info p {
-    max-width: 400px;
-    /* margin-right: 35px; */
-  }
-}
+/* ------------------------------------------------------- //
+// ------------------------ contact ---------------------- //
+// ------------------------------------------------------- */
 
-/* .source .social-gh {
-  margin-left: 25px;
-} */
-
-.source a:first-child {
-  margin-right: 0.938rem;
-}
-
-.contact {
-  /* height: 90vh; */ /* broke the contact container */
-  background-color: rgb(12, 12, 12);
+.contact { /* contact section */
+  padding: 2.5rem 0.938rem;
   text-align: center;
-  padding: 95px 0.938rem;
-}
-@media (min-width: 768px) {
-  .contact {
-    padding: 150px 0.938rem;
-  }
-}
-/* now broken 'contact' section -- footer doesnt display upon navigating to contact using the burger menu */
-@media (min-width: 769px) {
-  .contact {
-    padding: 70px 0.938rem;
-  }
+  background-color: var(--bg-color-secondary);
 }
 
-.project-preview,
-.project {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.contact h2 {
+  margin-bottom: 2.5rem;
 }
 
-.project-preview {
-  /* height: 100%; */ /* broke the contact container elements escaped the container in landscape view mobile*/
-  justify-content: center;
+.contact-social .social-img {
+  margin-bottom: 0.25rem;
 }
 
-.project-preview h2 {
-  margin-bottom: 3.125rem;
-  margin-top: 1.563rem;
-}
-@media (min-width: 768px) {
-  .project-preview h2 {
-    margin-top: 0;
-  }
-}
+.contact-social p {
+  margin-bottom: 2rem;
+} 
+.contact-social:last-of-type p {
+  margin-bottom: 0;
+} /* contact section end */
 
-.project {
-  margin-bottom: 1.563rem;
-}
-
-.project p {
-  margin-top: 0.438rem;
-  font-family: 'Reenie Beanie', cursive;
-  font-size: 1.3em;
-}
+/* ------------------------------------------------------- //
+// ------------------------ footer ----------------------- //
+// ------------------------------------------------------- */
 
 footer {
-  height: 4.688rem;
   display: flex;
-}
-
-footer p {
-  margin: auto auto;
-  font-family: 'Reenie Beanie', cursive;
-  font-size: 1.25em;
-}
-@media (min-width: 768px) {
-  footer p {
-    font-size: 1.5em;
-  }
-}
-
-/* ///////////////////////////////////////////
-Styles added without sass
- -- note --
-figure out how to use sass on windows,
-edit before final submission
-////////////////////////////////////////////*/
-
-.project-divider-odd,
-.project-divider-even {
-  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  width: 200px;
-  margin-bottom: 50px;
+  height: 4rem;
+  box-shadow: var(--box-shadow);
+  background-color: var(--bg-color-primary);
 }
-@media (min-width: 768px) {
-  .project-divider-odd,
-  .project-divider-even {
-    position: absolute;
-    top: -50px;
-    margin-bottom: 0;
+
+/* ------------------------------------------------------- //
+// --------------------- media queries ------------------- //
+// ------------------------------------------------------- */
+
+@media (min-width: 500px) {
+  .headshot { /* header section */
+      width: 25rem;
+      height: 25rem;
+  }
+  .social {
+      margin-top: 1.25rem;
+  } /* header section end */
+  .project-top { /* project section */
+      margin: 3rem auto;
+      max-width: 40.625rem;
+  }
+  .project-info {
+      width: 93%;
+      margin: 0 auto;
+  }
+  .project-social {
+      margin-left: 1rem;
+  } /* project section end */
+  .contact { /* contact section */
+      padding: 5rem 0.938rem;
+  }
+  footer p { /* footer section */
+      font-size: 1.5rem;
+  } /* footer section end */
+}
+
+@media (min-width: 901px) {
+  .primary-navigation { /* hamburger menu ul */
+      justify-content: center;
+      inset: 4.075rem 0 46% 65%;
+      border-radius: 1.5rem;
+      box-shadow: var(--box-shadow);
+      padding: unset;
+      transform: translateY(-150%);
+  } /* hamburger menu ul end */
+  .primary-navigation[data-visible=true] {
+      transform: translateY(0%);
+  }
+  header { /* header section */
+      padding: 8rem 2rem 10rem;
+      margin: 0 auto;
+      max-width: 80rem;
+      text-align: start;
+  }
+  .flexy-container {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: center;
+      gap: 10rem;
+  }
+  .social {
+      justify-content: start;
+  }
+  .tech-stack {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4rem; /* gives space to bottom of 'header' section so the 'about' section doesnt peek trough */
+  }
+  .tech-stack img:first-of-type {
+      margin-left: 7rem;
+  } /* header section end */
+  .about { /* about section */
+      gap: 2.5rem;
+      text-align: start;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+      padding: 10rem 2rem;
+  }
+  .about-img {
+      margin-bottom: 0;
+  }
+  .about-text {
+      max-width: 30rem;
+  }
+  .about p {
+      margin-bottom: 0;
+  } /* about section end */
+  .portfolio { /* project section */
+      padding: 10rem 1.438rem;
+  } /* project section end */
+}
+
+@media (min-width: 1021px) {
+  nav { /* nav section */
+      justify-content: unset;
+  }
+  #dark-mode-toggle {
+      margin-left: auto;
+  }
+  .mobile-nav-toggle {
+      display: none;
+  }
+  .primary-navigation { /* hamburger menu ul */
+      inset: unset;
+      border-radius: unset;
+      box-shadow: unset;
+      padding: unset;
+      transform: unset;
+      position: unset;
+      flex-direction: unset;
+      transform: unset;
+      transition: unset;
+      padding: unset;
+      background-color: unset;
+  } /* hamburger menu ul end */ /* nav section end */
+  .project-top { /* project section */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      max-width: 80rem; /* update for a more flexable solution */
+  }
+  .project-img {
+      width: 37em;
+      height: 27em;
+      margin-bottom: 0;
+  }
+  .project-info {
+      width: 30rem;
+      margin: 0;
+  }
+  .source p {
+      margin-bottom: 0;
+  } /* project section end */
+}
+
+@media (min-width: 1180px) {
+  .project-img {
+      width: 100%;
   }
 }
-.project-divider-odd {
-  left: -195px;
-  flex-direction: row-reverse;
-}
-@media (min-width: 768px) {
-  .project-divider-odd {
-    left: -115px;
-  }
-}
-
-.project-divider-even {
-  right: -195px;
-}
-@media (min-width: 768px) {
-  .project-divider-even {
-    right: -115px;
-  }
-}
-
-.divider {
-  width: 150px;
-  height: 2px;
-  background-color: white;
-}
-.divider-num {
-  font-family: 'Lemon', serif;
-}
-
-video::-webkit-media-controls {
-  display: none;
-}
 
 
-/*# sourceMappingURL=styles.css.map */
+/* ------------------------------------------------------- //
+// ---------------------- svg colors --------------------- //
+// ------------------------------------------------------- */
+/* ***REMOVE*** -- ***NOTE*** - class="social-img" - */
+/* ***REMOVE*** -- ***NOTE*** - fake css class names used to hold the colors - */
+.mailSVG {
+  color: #010101;
+  color: #f6f8f9;
+  color: #fdd402;
+  color: #dce6ea;
+  color: #8db9fd;
+  color: #779ff9;
+  color: #88b3f5;
+  color: #040404;
+  color: #f5f6f7;
+}
+.githubSVG {
+  color: #465c66;
+  color: #fcfdfe;
+  color: #495d67;
+  color: #feffff;
+  color: #80d8fe;
+}
+.linkedInSVG {
+  color: #0274b3;
+  color: #020304;
+  color: #030405;
+  color: #010203;
+  color: #fefefe;
+  color: #fff;
+  color: #fdfdfd;
+  color: #040404;
+  color: #f5f6f7;
+}
+.sun-moonSVG {
+  color: #ffce61; /* moon */
+  color: #ffb666; /* sun rays */
+}
+
