@@ -134,7 +134,7 @@ nav { /* nav positioning */
 } 
 .logo span {
   font-family: 'Reenie Beanie', 'Overpass', sans-serif;
-  color: aqua;
+  color: #465c66;
   font-size: 1.5rem;
 } /* nav logo positioning end */
 
@@ -202,9 +202,9 @@ header { /* header section */
   width: 18rem;
   height: 18rem;
   margin: 0 auto;
-  background-image: url("../img/iws-portrait.jpg");
+  background-image: url("../img/iws-portrait2.jpg");
   background-size: cover;
-  background-position: center center;
+  /* background-position: center center; */ /* ***REMOVE*** centered the original img - removing it centers the updated img */
   background-repeat: no-repeat;
   border: 0.188rem solid var(--brand-color-primary);
   animation: morph 8s ease-in-out infinite;
@@ -487,7 +487,7 @@ footer {
       align-items: center;
       justify-content: center;
       gap: 2.5rem;
-      max-width: 80rem; /* update for a more flexable solution */
+      max-width: 100%; /* update for a more flexable solution */
   }
   .project-img {
       width: 37em;
